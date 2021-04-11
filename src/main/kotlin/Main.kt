@@ -14,7 +14,7 @@ fun main(args: Array<String>){
     battleSimulator(name)
 }
 
-val color: Color = Color()
+private val color: Color = Color()
 
 fun battleSimulator(username: String) {
     var player: Human = Human(username, 5, 20)
