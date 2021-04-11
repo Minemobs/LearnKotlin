@@ -1,4 +1,5 @@
 class Color {
+
     val ANSI_RESET = "\u001B[0m"
     val ANSI_BLACK = "\u001B[30m"
     val ANSI_RED = "\u001B[31m"
