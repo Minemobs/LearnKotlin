@@ -1,5 +1,4 @@
 import java.lang.NumberFormatException
-import kotlin.system.exitProcess
 
 fun main(args: Array<String>){
     println("What's your name ?")
@@ -12,8 +11,9 @@ fun main(args: Array<String>){
 
 // From https://github.com/Minemobs/LearnScala/blob/main/lib/src/main/scala/fr/minemobs/learnscala/Main.scala#L34
 fun nameList(names: ArrayList<String>){
+    val color: Color = Color()
     loop@ while (true){
-        println("Do you want to check the name list or add a name to the list \n" +
+        println(color.ANSI_RESET + "Do you want to check the name list or add a name to the list \n" +
                 "[0] View names \n" +
                 "[1] Add name \n" +
                 "[2] Exit")
@@ -21,27 +21,32 @@ fun nameList(names: ArrayList<String>){
         try{
             response = readLine()!!.toInt()
         }catch (ex: NumberFormatException){
-            println("You didn't choose a number")
+            println(color.ANSI_RED + "You didn't choose a number")
             nameList(names)
         }
 
-        when (response) {
-            0 -> {
-                println("----------------------------------")
-                for (name in names) {
-                    println(name)
+        if(response !in 0..2){
+            println(color.ANSI_RED + "Please choose a number between 0 and 2")
+        }else{
+            when (response) {
+                0 -> {
+                    val bar: String = color.ANSI_GRAY + "----------------------------------" + color.ANSI_RESET
+                    println(bar)
+                    for (name in names) {
+                        println(color.ANSI_GREEN + name + color.ANSI_RESET)
+                    }
+                    println(bar)
                 }
-                println("----------------------------------")
-            }
 
-            1 -> {
-                println("Please write a name")
-                names.add(readLine()!!)
+                1 -> {
+                    println(color.ANSI_GREEN + "Please write a name")
+                    names.add(readLine()!!)
+                }
+                2 -> {
+                    break@loop
+                }
+                else -> println()
             }
-            2 -> {
-                break@loop
-            }
-            else -> println()
         }
     }
 }
