@@ -3,7 +3,7 @@ import entities.Zombie
 import java.lang.NumberFormatException
 import kotlin.random.Random
 
-fun main(args: Array<String>){
+fun main(){
     println("What's your name ?")
     val name: String = readLine().toString()
     println(String.format("Hello %s !", name))
@@ -17,10 +17,21 @@ fun main(args: Array<String>){
 private val color: Color = Color()
 
 fun battleSimulator(username: String) {
-    var player: Human = Human(username, 5, 20)
-    var zombie: Zombie = Zombie("Zombie " + Random.nextInt(0, 101), 3, 15)
+    val player = Human(username, 5, 20)
+    val zombie = Zombie("Zombie " + Random.nextInt(0, 101), 3, 15)
+
+    if(Random.nextInt(0, 2) == 0){
+        println(player.getName() + " used his ability : " + color.ANSI_RED + "First hit " + color.ANSI_RESET + "on " + zombie.getName())
+        zombie.setHealth(zombie.getHealth() - player.getAttackDamage())
+        println(zombie.getName() + " has now " + zombie.getHealth() + color.ANSI_RED + " ❤️" + color.ANSI_RESET)
+    }else{
+        println(zombie.getName() + " used his ability : " + color.ANSI_RED + "First hit " + color.ANSI_RESET + "on " + player.getName())
+        player.setHealth(player.getHealth() - zombie.getAttackDamage())
+        println(player.getName() + " has now " + player.getHealth() + color.ANSI_RED + " ❤️" + color.ANSI_RESET)
+    }
 
     while (zombie.getHealth() > 0 && player.getHealth() > 0){
+        Thread.sleep(2500)
         println(player.getName() + " attack " + zombie.getName())
         zombie.setHealth(zombie.getHealth() - player.getAttackDamage())
         println(zombie.getName() + " has now " + zombie.getHealth() + color.ANSI_RED + " ❤️" + color.ANSI_RESET)
@@ -29,7 +40,6 @@ fun battleSimulator(username: String) {
         println(zombie.getName() + " attack " + player.getName())
         player.setHealth(player.getHealth() - zombie.getAttackDamage())
         println(player.getName() + " has now " + player.getHealth() + color.ANSI_RED + " ❤️" + color.ANSI_RESET)
-        Thread.sleep(2500)
     }
 
     if(player.getHealth() > 0 && zombie.getHealth() <= 0){
