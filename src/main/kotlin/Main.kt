@@ -4,15 +4,14 @@ import java.lang.NumberFormatException
 import kotlin.random.Random
 
 fun main(args: Array<String>){
-    /*println("What's your name ?")
+    println("What's your name ?")
     val name: String = readLine().toString()
     println(String.format("Hello %s !", name))
     val names: ArrayList<String> = ArrayList()
     names.add(name)
 
     //nameList(names)
-    battleSimulator(name)*/
-    battleSimulator("Player " + Random.nextInt(0, 101))
+    battleSimulator(name)
 }
 
 val color: Color = Color()
