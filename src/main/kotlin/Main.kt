@@ -27,26 +27,28 @@ fun nameList(names: ArrayList<String>){
 
         if(response !in 0..2){
             println(color.ANSI_RED + "Please choose a number between 0 and 2")
-        }else{
-            when (response) {
-                0 -> {
-                    val bar: String = color.ANSI_GRAY + "----------------------------------" + color.ANSI_RESET
-                    println(bar)
-                    for (name in names) {
-                        println(color.ANSI_GREEN + name + color.ANSI_RESET)
-                    }
-                    println(bar)
-                }
-
-                1 -> {
-                    println(color.ANSI_GREEN + "Please write a name")
-                    names.add(readLine()!!)
-                }
-                2 -> {
-                    break@loop
-                }
-                else -> println()
-            }
+            continue@loop
         }
+
+        when (response) {
+            0 -> {
+                val bar: String = color.ANSI_GRAY + "----------------------------------" + color.ANSI_RESET
+                println(bar)
+                for (name in names) {
+                    println(color.ANSI_GREEN + name + color.ANSI_RESET)
+                }
+                println(bar)
+            }
+
+            1 -> {
+                println(color.ANSI_GREEN + "Please write a name")
+                names.add(readLine()!!)
+            }
+            2 -> {
+                break@loop
+            }
+            else -> println()
+        }
+
     }
 }
