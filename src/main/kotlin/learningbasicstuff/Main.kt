@@ -1,5 +1,7 @@
-import entities.Human
-import entities.Zombie
+package learningbasicstuff
+
+import learningbasicstuff.entities.Human
+import learningbasicstuff.entities.Zombie
 import java.lang.NumberFormatException
 import kotlin.random.Random
 
@@ -10,7 +12,7 @@ fun main(){
     val names: ArrayList<String> = ArrayList()
     names.add(name)
 
-    //nameList(names)
+    //learningbasicstuff.nameList(names)
     battleSimulator(name)
 }
 
@@ -55,7 +57,8 @@ fun battleSimulator(username: String) {
 fun nameList(names: ArrayList<String>){
 
     loop@ while (true){
-        println(color.ANSI_RESET + "Do you want to check the name list or add a name to the list \n" +
+        println(
+            color.ANSI_RESET + "Do you want to check the name list or add a name to the list \n" +
                 "[0] View names \n" +
                 "[1] Add name \n" +
                 "[2] Exit")

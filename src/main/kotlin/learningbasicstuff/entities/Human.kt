@@ -1,4 +1,4 @@
-package entities
+package learningbasicstuff.entities
 
 import java.util.UUID
 

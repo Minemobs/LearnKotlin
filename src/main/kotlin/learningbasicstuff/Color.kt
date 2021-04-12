@@ -1,3 +1,5 @@
+package learningbasicstuff
+
 class Color {
 
     val ANSI_RESET = "\u001B[0m"
