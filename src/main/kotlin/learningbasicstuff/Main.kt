@@ -12,8 +12,8 @@ fun main(){
     val names: ArrayList<String> = ArrayList()
     names.add(name)
 
-    //learningbasicstuff.nameList(names)
-    battleSimulator(name)
+    learningbasicstuff.nameList(names)
+    //battleSimulator(name)
 }
 
 private val color: Color = Color()
@@ -75,6 +75,7 @@ fun nameList(names: ArrayList<String>){
             continue@loop
         }
 
+
         when (response) {
             0 -> {
                 val bar: String = color.ANSI_GRAY + "----------------------------------" + color.ANSI_RESET
@@ -94,6 +95,5 @@ fun nameList(names: ArrayList<String>){
             }
             else -> println()
         }
-
     }
 }
